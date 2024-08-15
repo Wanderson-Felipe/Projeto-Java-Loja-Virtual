@@ -28,7 +28,11 @@ public class VendaDAO {
             PreparedStatement st = conn.prepareStatement("INSERT INTO venda (data, quantidade, cliente_id, produto_id, valor) VALUES(?, ?, ?, ?, ?)");
             st.setDate(1, vend.getData());
             st.setString(2, vend.getQuantidade());
-            st.setInt(3, vend.getCliente_id().getId());
+            if (vend.getCliente_id() != null) {
+                st.setInt(3, vend.getCliente_id().getId());
+            } else {
+                st.setNull(3, java.sql.Types.INTEGER);
+            }
             st.setInt(4, vend.getProduto_id().getId());
             st.setString(5, vend.getValor());
 
@@ -47,9 +51,9 @@ public class VendaDAO {
 
             List<Venda> lista = new ArrayList<>();
 
-            String sqlFiltro = "select A.id, A.data, A.quantidade, B.nome AS nome_cliente, C.nome AS nome_produto, A.valor FROM venda A " +
-                           "inner join cliente B on A.cliente_id = B.id " +
-                           "inner join produto C on A.produto_id = C.id";
+            String sqlFiltro = "select A.id, A.data, A.quantidade," + "COALESCE (B.nome, 'Cliente não informado') AS nome_cliente, C.nome AS nome_produto, A.valor FROM venda A "
+                    + "left join cliente B on A.cliente_id = B.id "
+                    + "inner join produto C on A.produto_id = C.id";
             if (!termoBusca.isEmpty()) {
                 sqlFiltro = sqlFiltro + " WHERE B.nome like ?";
             }
@@ -66,15 +70,15 @@ public class VendaDAO {
                 vendaEncontrada.setId(rs.getInt("id"));
                 vendaEncontrada.setData(rs.getDate("data"));
                 vendaEncontrada.setQuantidade(rs.getString("quantidade"));
-                
+
                 Cliente cliente = new Cliente();
                 cliente.setNome(rs.getString("nome_cliente"));
                 vendaEncontrada.setCliente_id(cliente);
-                
+
                 Produto produto = new Produto();
                 produto.setNome(rs.getString("nome_produto"));
                 vendaEncontrada.setProduto_id(produto);
-                
+
                 vendaEncontrada.setValor(rs.getString("valor"));
                 lista.add(vendaEncontrada);
             }
