@@ -1,0 +1,185 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: darkslateblue;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav a {
+    display: block;
+    background-color: #555;
+    color: white;
+    margin: 10px auto;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 20px 10px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #777;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+    min-height: calc(100vh - 100px);
+}
+
+section {
+    padding: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: lightyellow;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.formulario {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #555;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.formulario label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+input {
+    width: calc(100% - 16px);
+    display: block;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #444;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #777;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #333;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.invalid-feedback {
+    color: red;
+    display: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+main {
+    min-height: calc(100vh - 50px);
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.form-container, .list-container {
+    width: 45%;
+}
+
+#vendasTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#vendasTable th, #vendasTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#vendasTable th {
+    background-color: #333;
+    text-align: left;
+}
+
+.formulario-vendas {
+    max-width: 500px;
+    width: 80%;
+    background-color: #555;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.formulario-vendas label,
+.formulario-vendas input,
+.formulario-vendas select {
+    display: block;
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+.formulario-vendas input,
+.formulario-vendas select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.formulario-vendas button {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario-vendas button:hover {
+    background-color: #777;
+}

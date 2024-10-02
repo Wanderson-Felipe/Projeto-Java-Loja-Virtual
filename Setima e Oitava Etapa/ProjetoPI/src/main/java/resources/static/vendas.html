@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro de Vendas</title>
+        <link rel="stylesheet" href="css/pi.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="formulario-vendas">
+                <h2>Registro de Vendas</h2>
+                <form id="vendaForm">
+                    <label for="dataVenda">Data:</label>
+                    <input type="text" id="dataVenda" placeholder="DD/MM/AAAA">
+
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" max="255">
+
+                    <label for="clienteVenda">Cliente:</label>
+                    <select id="clienteVenda">
+                        <option value="">Selecione um cliente</option>
+                        <option value="cliente 1">cliente 1</option>
+                        <option value="cliente 2">cliente 2</option>
+
+                    </select>
+
+                    <label for="produtoVenda">Produto:</label>
+                    <select id="produtoVenda">
+                        <option value="">Selecione um produto</option>
+                        <option value="produto 1">produto 1</option>
+                        <option value="produto 2">produto 2</option>
+                    </select>
+
+                    <label for="valorVenda">Valor:</label>
+                    <input type="text" id="valorVenda" maxlength="13">
+
+                    <button type="submit" id="btnFinalizar">Finalizar Venda</button>
+                    <button type="button" id="btnLimparVenda">Limpar</button>
+                </form>
+            </div>
+
+            <div class="list-container">
+                <h2>Listagem de Vendas</h2>
+                <label for="filtroVenda">Filtrar por nome:</label>
+                <input type="text" id="filtroVenda" placeholder="Digite o nome do cliente">
+
+                <table id="vendasTable">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Quantidade</th>
+                            <th>Cliente</th>
+                            <th>Produto</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>Sistema de Loja - Gerenciamento</p>
+        </footer>
+
+
+        <script src="js/vendas.js"></script>
+    </body>
+</html>

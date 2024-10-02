@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Clientes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/pi.css">
+    </head>
+    <body>
+        <header>
+            <h1>W13 Imports</h1>
+        </header>
+
+        <main>
+            <h2>Cadastrar Cliente</h2>
+            <div class="formulario">
+                <form id="simpleForm" novalidate>
+                    <div>
+                        <label for="nome">Nome (máx. 100 caracteres):</label>
+                        <input type="text" id="nome" maxlength="100" required>
+                        <div class="invalid-feedback">Por favor, insira um nome válido.</div>
+                    </div>
+                    <div>
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" required>
+                        <div class="invalid-feedback">Por favor, insira um CPF válido.</div>
+                    </div>
+                    <div>
+                        <label for="telefone">Telefone:</label>
+                        <input type="text" id="telefone" required>
+                        <div class="invalid-feedback">Por favor, insira um telefone válido.</div>
+                    </div>
+                    <div>
+                        <label for="endereco">Endereço (máx. 200 caracteres):</label>
+                        <input type="text" id="endereco" maxlength="200" required>
+                        <div class="invalid-feedback">Por favor, insira um endereço válido.</div>
+                    </div>
+                    <button type="button" id="btnEnviar">Enviar</button>
+                    <button type="button" id="btnLimpar">Limpar</button>
+                </form>
+            </div>
+
+            <h2>Lista de Clientes</h2>
+            <table id="clientesTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </main>
+
+        <footer>
+            <p>Sistema de Loja - Gerenciamento</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script src="js/clientes.js"></script>
+    </body>
+</html>
