@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Registro e Listagem de Vendas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
+
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="formulario-vendas">
+                <a href="/">Voltar para a Página Inicial</a>
+                <h2>Registro de Vendas</h2>
+
+                <form action="/vendas" method="post">
+                    <label for="data">Data:</label>
+                    <input type="text" id="data" name="data" placeholder="DD/MM/AAAA" required><br>
+
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" name="quantidade" min="1" required><br>
+
+                    <label for="cliente">Cliente:</label>
+                    <select id="cliente" name="cliente.id" required>
+                        <option value="" disabled selected>Selecione um cliente</option>
+                        <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+                    </select><br>
+
+                    <label for="produto">Produto:</label>
+                    <select id="produto" name="produto.id" required>
+                        <option value="" disabled selected>Selecione um produto</option>
+                        <option th:each="produto : ${produtos}" th:value="${produto.id}" th:text="${produto.nome}"></option>
+                    </select><br>
+
+                    <label for="valor">Valor:</label>
+                    <input type="text" id="valor" name="valor" required><br>
+
+                    <button type="submit">Registrar Venda</button>
+                </form>
+            </div>
+            <hr>
+
+            <div class="list-container">
+                <h2>Listagem de Vendas</h2>
+                <form action="/vendas" method="get">
+                    <label for="nomeCliente">Buscar por Nome do Cliente:</label>
+                    <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Digite o nome do cliente">
+                    <button type="submit">Filtrar</button>
+                </form>
+
+                <hr>
+
+                <table id="vendasTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Cliente</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="venda : ${listaVendas}">
+                            <td th:text="${venda.id}"></td>
+                            <td th:text="${venda.data}"></td>
+                            <td th:text="${venda.cliente != null ? venda.cliente.nome : 'Cliente não informado'}"></td>
+                            <td th:text="${venda.produto.nome}"></td>
+                            <td th:text="${venda.quantidade}"></td>
+                            <td th:text="${venda.valor}"></td> <//<!-- PRECISO ALTERAR ESSA PARTE DE VALOR COLCOAR CONFORME O BANCO DE DADOS PARA NAO CRIAR DUAS COLUNAS -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>Sistema de Loja - Gerenciamento</p>
+        </footer>
+        <script src="/venda.js"></script>
+    </body>
+</html>

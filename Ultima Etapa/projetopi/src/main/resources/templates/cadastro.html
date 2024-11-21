@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Cadastro de Clientes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
+        <script src="/cliente.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="/">Voltar para a Página Inicial</a>
+            <h1>W13 Imports</h1>
+        </header>
+
+        <main>
+            <h2>Cadastrar Cliente</h2>
+            <div class="formulario">
+                <form action="/clientes/cadastro" method="post">
+                    <div>
+                        <label for="nome">Nome:</label>
+                        <input type="hidden" name="id" th:value="${cliente.id}" />
+                        <input type="text" id="nome" name="nome" th:value="${cliente.nome}" required><br>
+                    </div>
+                    <div>
+                        <label for="cpf">CPF:</label>
+                        <input type="text" id="cpf" name="cpf" th:value="${cliente.cpf}" required><br>
+                    </div>
+                    <div>
+                        <label for="telefone">Telefone:</label>
+                        <input type="text" id="telefone" name="telefone" th:value="${cliente.telefone}" required><br>
+                    </div>
+                    <div>
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco" th:value="${cliente.endereco}" required><br>
+                    </div>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+
+
+            <h2>Lista de Clientes</h2>
+            <table id="clientesTable" border="1">
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Ações</th>
+                </tr>
+                <tr th:each="cliente : ${listaClientes}">
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.cpf}"></td>
+                    <td th:text="${cliente.telefone}"></td>
+                    <td th:text="${cliente.endereco}"></td>
+                    <td>
+
+                        <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}">
+                            <button>Editar</button>
+                        </a>
+
+                        <a th:href="@{/clientes/excluir/{id}(id=${cliente.id})}">
+                            <button>Excluir</button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </main>
+        <footer>
+            <p>Sistema de Loja - Gerenciamento</p>
+        </footer>
+    </body>
+</html>
