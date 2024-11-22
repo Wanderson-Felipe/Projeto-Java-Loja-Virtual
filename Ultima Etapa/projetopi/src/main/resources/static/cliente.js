@@ -13,4 +13,18 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
+
+
+    $("a[onclick^='confirmarExclusao']").on("click", function (event) {
+        return confirmarExclusao(event);
+    });
 });
+
+
+function confirmarExclusao(event) {
+    if (!confirm('Tem certeza que deseja excluir este cliente?')) {
+        event.preventDefault();
+        return false;
+    }
+    return true;
+}
